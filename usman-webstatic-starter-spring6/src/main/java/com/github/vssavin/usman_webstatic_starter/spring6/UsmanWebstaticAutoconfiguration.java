@@ -25,10 +25,7 @@ import org.springframework.web.filter.HiddenHttpMethodFilter;
 
 import jakarta.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
-import java.util.Collections;
-import java.util.List;
-import java.util.Properties;
-import java.util.function.Supplier;
+import java.util.*;
 
 /**
  * Usman-webstatic autoconfiguration.
@@ -44,6 +41,12 @@ import java.util.function.Supplier;
 public class UsmanWebstaticAutoconfiguration {
 
     private static final Logger log = LoggerFactory.getLogger(UsmanWebstaticAutoconfiguration.class);
+
+    @Bean
+    public EntityScanPackages usmanEntityPackages() {
+        log.debug("Initializing usman entity packages...");
+        return () -> new String[] { "com.github.vssavin.usmancore" };
+    }
 
     @Bean
     @ConditionalOnMissingBean(PasswordEncoder.class)
@@ -105,26 +108,23 @@ public class UsmanWebstaticAutoconfiguration {
     }
 
     @Bean
+    @ConditionalOnMissingBean(PersistenceExceptionTranslationPostProcessor.class)
     public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
         return new PersistenceExceptionTranslationPostProcessor();
     }
 
     @Bean
-    @ConditionalOnMissingBean(name = "entityScanPackages")
-    public EntityScanPackages entityScanPackages() {
-        log.warn("Entity packages to scan are not initialized! Using only 'usman' packages!");
-        return new EntityScanPackages("com.github.vssavin.usmancore");
-    }
-
-    @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(
-            @Qualifier("entityScanPackages") Supplier<String[]> entityScanPackages,
+    @ConditionalOnMissingBean(LocalContainerEntityManagerFactoryBean.class)
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(List<EntityScanPackages> entityScanPackagesList,
             @Qualifier("routingDatasource") DataSource routingDatasource, DatabaseConfig databaseConfig) {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
 
         try {
+            List<String> packagesList = new ArrayList<>();
+            entityScanPackagesList
+                .forEach(packages -> packagesList.addAll(Arrays.asList(packages.getPackagesToScan())));
             em.setDataSource(routingDatasource);
-            em.setPackagesToScan(entityScanPackages.get());
+            em.setPackagesToScan(packagesList.toArray(new String[0]));
 
             em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
             String hibernateDialect = databaseConfig.getDialect();
