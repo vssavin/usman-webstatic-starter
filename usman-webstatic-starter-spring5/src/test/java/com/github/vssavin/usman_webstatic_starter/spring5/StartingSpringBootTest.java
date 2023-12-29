@@ -1,5 +1,6 @@
 package com.github.vssavin.usman_webstatic_starter.spring5;
 
+import com.github.vssavin.usman_webstatic_starter.spring5.config.ApplicationConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,7 +12,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@SpringBootTest
+@SpringBootTest(properties = "spring.main.allow-bean-definition-overriding=true", classes = ApplicationConfig.class)
 public class StartingSpringBootTest {
 
     @Test
