@@ -4,14 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <parent>
-        <groupId>com.github.vssavin.usman-webstatic-starter</groupId>
+        <groupId>com.github.vssavin</groupId>
         <artifactId>usman-webstatic-starter-parent</artifactId>
         <version>0.0.1</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.vssavin</groupId>
+    <groupId>com.github.vssavin.usman-webstatic-starter</groupId>
     <artifactId>usman-webstatic-starter-spring6</artifactId>
     <version>0.0.1</version>
 
