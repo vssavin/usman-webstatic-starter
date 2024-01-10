@@ -36,7 +36,7 @@ import java.util.*;
  * @author vssavin on 28.12.2023.
  */
 @Configuration
-@ComponentScan({ "com.github.vssavin.usmancore.*", "com.github.vssavin.usman_webstatic.spring6.*" })
+@ComponentScan({ "com.github.vssavin.usmancore.*", "com.github.vssavin.usman_webstatic.spring5.*" })
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = { "com.github.vssavin.usmancore.*" })
 @EnableWebSecurity
