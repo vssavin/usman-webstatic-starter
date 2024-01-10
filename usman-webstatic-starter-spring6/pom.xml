@@ -6,14 +6,14 @@
     <parent>
         <groupId>com.github.vssavin</groupId>
         <artifactId>usman-webstatic-starter-parent</artifactId>
-        <version>0.0.1</version>
+        <version>0.0.2</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.vssavin.usman-webstatic-starter</groupId>
     <artifactId>usman-webstatic-starter-spring6</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
 
     <properties>
         <springframework.version>6.1.1</springframework.version>
