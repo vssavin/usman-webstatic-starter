@@ -7,10 +7,10 @@
     <groupId>com.github.vssavin</groupId>
     <artifactId>usman-webstatic-starter-parent</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
 
     <properties>
-        <usman-webstatic.version>0.0.2</usman-webstatic.version>
+        <usman-webstatic.version>0.0.3</usman-webstatic.version>
         <springframework.version>5.3.24</springframework.version>
         <spring.data.version>2.6.10</spring.data.version>
         <spring.security.version>5.8.0</spring.security.version>
