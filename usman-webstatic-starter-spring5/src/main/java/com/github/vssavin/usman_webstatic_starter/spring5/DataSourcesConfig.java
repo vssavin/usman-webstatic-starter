@@ -21,7 +21,7 @@ import static org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType.
  */
 @Configuration
 @Import(UsmanDataSourceConfig.class)
-class DataSourcesConfig {
+public class DataSourcesConfig {
 
     private static final Logger log = LoggerFactory.getLogger(DataSourcesConfig.class);
 

@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "db")
 @PropertySource(value = { "file:./conf.properties", "file:../conf.properties", "classpath: application.properties",
         "classpath: application.yml" }, ignoreResourceNotFound = true)
-class DatabaseConfig {
+public class DatabaseConfig {
 
     @Value("${db.url:}")
     private String url;
